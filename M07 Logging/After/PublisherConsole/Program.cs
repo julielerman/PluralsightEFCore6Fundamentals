@@ -2,8 +2,9 @@
 using PublisherData;
 
 PubContext _context = new PubContext();
-//this assumes you are working with the populated
-//database created in previous module
+_context.Database.EnsureDeleted();
+_context.Database.EnsureCreated();
+
 
 GetAuthors();
 
