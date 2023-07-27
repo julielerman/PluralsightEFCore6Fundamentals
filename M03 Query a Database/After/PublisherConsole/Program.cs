@@ -9,11 +9,11 @@ PubContext _context = new PubContext();
 //database created in previous module
 
 
-//QueryFilters();
-//FindIt();
-//AddSomeMoreAuthors();
-//SkipAndTakeAuthors();
-//SortAuthors();
+QueryFilters();
+FindIt();
+AddSomeMoreAuthors();
+SkipAndTakeAuthors();
+SortAuthors();
 QueryAggregate();
 
 
