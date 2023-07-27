@@ -3,6 +3,8 @@ using PublisherData;
 using PublisherDomain;
 
 PubContext _context = new PubContext(); //existing database
+_context.Database.EnsureDeleted();
+_context.Database.EnsureCreated();
 
 DeleteAnAuthor();
 
@@ -13,13 +15,13 @@ void DeleteAnAuthor()
     _context.SaveChanges();
 }
 
-//CascadeDeleteInActionWhenTracked();
+CascadeDeleteInActionWhenTracked();
 
 void CascadeDeleteInActionWhenTracked()
 {
     //note : I knew that author with id 2 had books in my sample database
     var author = _context.Authors.Include(a => a.Books)
-     .FirstOrDefault(a => a.AuthorId == 2);
+     .FirstOrDefault(a => a.AuthorId == 3);
     author.Books.Remove(author.Books[0]);
     _context.ChangeTracker.DetectChanges();
     var state = _context.ChangeTracker.DebugView.ShortView;
@@ -27,7 +29,7 @@ void CascadeDeleteInActionWhenTracked()
 }
 
 
-//ModifyingRelatedDataWhenTracked();
+ModifyingRelatedDataWhenTracked();
 
 void ModifyingRelatedDataWhenTracked()
 {
@@ -41,7 +43,7 @@ void ModifyingRelatedDataWhenTracked()
 }
 
 
-//RemovingRelatedData();
+RemovingRelatedData();
 void RemovingRelatedData()
 {
     var author = _context.Authors.Include(a => a.Books)
@@ -53,7 +55,7 @@ void RemovingRelatedData()
     var state = _context.ChangeTracker.DebugView.ShortView;
 
 }
-//ModifyingRelatedDataWhenNotTracked();
+ModifyingRelatedDataWhenNotTracked();
 
 void ModifyingRelatedDataWhenNotTracked()
 {
@@ -71,7 +73,7 @@ void ModifyingRelatedDataWhenNotTracked()
 
 
 
-//FilterUsingRelatedData();
+FilterUsingRelatedData();
 void FilterUsingRelatedData()
 {
     var recentAuthors = _context.Authors
@@ -90,7 +92,7 @@ void LazyLoadBooksFromAnAuthor()
     }
 }
 
-//Projections();
+Projections();
 void Projections()
 {
     var unknownTypes = _context.Authors
@@ -104,7 +106,7 @@ void Projections()
     var debugview = _context.ChangeTracker.DebugView.ShortView;
 }
 
-//ExplicitLoadCollection();
+ExplicitLoadCollection();
 
 void ExplicitLoadCollection()
 {
@@ -113,7 +115,7 @@ void ExplicitLoadCollection()
 
 }
 
-//ExplicitLoadReference();
+ExplicitLoadReference();
 void ExplicitLoadReference()
 {
     var book = _context.Books.FirstOrDefault();
@@ -121,7 +123,7 @@ void ExplicitLoadReference()
 }
 
 
-//EagerLoadBooksWithAuthors();
+EagerLoadBooksWithAuthors();
 void EagerLoadBooksWithAuthors()
 {
     //var authors = _context.Authors.Include(a => a.Books).ToList();
@@ -146,7 +148,7 @@ void EagerLoadBooksWithAuthorsVariations()
         .Include(a => a.Books).FirstOrDefault();
 }
 
-//InsertNewAuthorWithNewBook();
+InsertNewAuthorWithNewBook();
 void InsertNewAuthorWithNewBook()
 {
     var author = new Author { FirstName = "Lynda", LastName = "Rutledge" };
@@ -159,7 +161,7 @@ void InsertNewAuthorWithNewBook()
     _context.SaveChanges();
 }
 
-//InsertNewAuthorWith2NewBooks();
+InsertNewAuthorWith2NewBooks();
 void InsertNewAuthorWith2NewBooks()
 {
     var author = new Author { FirstName = "Don", LastName = "Jones" };
@@ -171,7 +173,7 @@ void InsertNewAuthorWith2NewBooks()
     _context.SaveChanges();
 }
 
-//AddNewBookToExistingAuthorInMemory();
+AddNewBookToExistingAuthorInMemory();
 void AddNewBookToExistingAuthorInMemory()
 {
     var author = _context.Authors.FirstOrDefault(a => a.LastName == "Howey");
@@ -184,7 +186,7 @@ void AddNewBookToExistingAuthorInMemory()
     _context.SaveChanges();
 }
 
-//AddNewBookToExistingAuthorInMemoryViaBook();
+AddNewBookToExistingAuthorInMemoryViaBook();
 void AddNewBookToExistingAuthorInMemoryViaBook()
 {
     var book = new Book

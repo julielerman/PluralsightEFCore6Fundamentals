@@ -37,17 +37,39 @@ namespace PublisherData
                 new Book {BookId = 2, AuthorId=2, Title = "A Tale For the Time Being",
                 PublishDate = new DateTime(2013,12,31) },
                 new Book {BookId = 3, AuthorId=3, Title = "The Left Hand of Darkness",
-                PublishDate=(DateTime)new DateTime(1969,3,1)} };
-            modelBuilder.Entity<Book>().HasData(someBooks);
+                PublishDate=(DateTime)new DateTime(1969,3,1)} ,
+            new Book
+            {
+                BookId = 4,
+                AuthorId = 5,
+                Title = "Wool",
+                PublishDate = (DateTime)new DateTime(2011, 3, 1)
+            },
+            new Book
+            {
+                BookId =5,
+                AuthorId = 5,
+                Title = "Dust",
+                PublishDate = (DateTime)new DateTime(2014, 3, 1)
+            }, new Book
+ {
+     BookId = 6,
+     AuthorId = 5,
+     Title = "Shift",
+     PublishDate = (DateTime)new DateTime(2015, 3, 1)
+ }};
+
+        modelBuilder.Entity<Book>().HasData(someBooks);
 
 
             //example of mapping an unconventional FK
             //since I have the author prop in books, I am
             //using it in WithOne:
-            modelBuilder.Entity<Author>()
-               .HasMany(a => a.Books)
-               .WithOne(b => b.Author)
-               .HasForeignKey(b=>b.AuthorId).IsRequired(false);
+            //modelBuilder.Entity<Author>()
+            //   .HasMany(a => a.Books)
+            //   .WithOne(b => b.Author)
+            //   .HasForeignKey(b=>b.AuthorId).IsRequired(false);
+            //Note that IsRequired(false) will also eliminate the cascade delete
 
 
             //example of a more advanced mapping to specify
