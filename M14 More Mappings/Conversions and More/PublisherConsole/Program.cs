@@ -1,6 +1,9 @@
-﻿using PublisherData;
+﻿using Microsoft.EntityFrameworkCore;
+using PublisherData;
 
-PubContext _context = new PubContext(); //existing database
+PubContext _context = new PubContext(); 
+_context.Database.EnsureDeleted();
+_context.Database.EnsureCreated();
 
 RetrieveAndUpdateOneBook();
 void RetrieveAndUpdateOneBook()
