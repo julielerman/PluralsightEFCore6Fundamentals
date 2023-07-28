@@ -12,7 +12,10 @@ The EF Core 7 branch is still using .NET6 but every solution (before and after) 
 
 The demos for Modules 2-13 required NO CHANGES AT ALL. 
 
-I had to make one change in the API Testing demo (also part of M13) which was to call SaveChanges when adding data to the inmemory context.
+**CHANGES TO THE API TEST DEMO**
+1) I updated the Tests project in this demo to .NET 7 (and all packages) in order to run the GetEndPoint tests. The other projects in the solution are still .NET 6.
+
+2) I had to make one change in the API Testing demo (also part of M13) which was to call SaveChanges when adding data to the inmemory context.
 I could not find details about this change on GitHub. But also want to note that team is more adamant about saying the the provider is not recommended,
 so for the udpate to the course (EF Core 8) I will not use it any more.
 
