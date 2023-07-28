@@ -12,9 +12,10 @@ namespace PublisherData
     {
         var connectionstring =
             "AccountEndpoint = https://someresource.documents.azure.com:443;AccountKey=yoursecretkey";
-    
-        optionsBuilder
-            .UseCosmos(connectionstring, "EFCore6")
+          
+
+            optionsBuilder
+                .UseCosmos(connectionstring, "EFCore6")
             .LogTo(Console.WriteLine,
                 new[] { DbLoggerCategory.Database.Command.Name },
                 LogLevel.Information)

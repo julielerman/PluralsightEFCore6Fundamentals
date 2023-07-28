@@ -2,6 +2,7 @@
 using PublisherDomain;
 
 PubContext _context = new PubContext();
+_context.Database.EnsureDeleted();
 _context.Database.EnsureCreated();
 
 var author = new Author { FirstName = "Rhoda", LastName = "Lerman" };
