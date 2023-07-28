@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PublisherData", "PublisherD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PubAPI", "PubAPI\PubAPI.csproj", "{44ACEC97-694E-4065-B865-8DA072F30E69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{21FFD901-9FB4-4039-A61D-3CD776B1FF62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{6F34D24A-DE85-4A01-9668-3D3A3519E2C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{44ACEC97-694E-4065-B865-8DA072F30E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44ACEC97-694E-4065-B865-8DA072F30E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44ACEC97-694E-4065-B865-8DA072F30E69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21FFD901-9FB4-4039-A61D-3CD776B1FF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21FFD901-9FB4-4039-A61D-3CD776B1FF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21FFD901-9FB4-4039-A61D-3CD776B1FF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21FFD901-9FB4-4039-A61D-3CD776B1FF62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F34D24A-DE85-4A01-9668-3D3A3519E2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F34D24A-DE85-4A01-9668-3D3A3519E2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F34D24A-DE85-4A01-9668-3D3A3519E2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F34D24A-DE85-4A01-9668-3D3A3519E2C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
