@@ -2,6 +2,8 @@
 using PublisherData;
 
 PubContext _context = new PubContext(); //existing database
+_context.Database.EnsureDeleted();
+_context.Database.Migrate(); //ensurecreated won't pick up the non-schema changes!
 
 
 DeleteCover(10);
@@ -46,7 +48,7 @@ void InterpolatedSqlStoredProc()
 }
 
 
-//SimpleRawSQL();
+SimpleRawSQL();
 void SimpleRawSQL()
 {
     var authors = _context.Authors.FromSqlRaw("select * from authors").OrderBy(a => a.LastName).ToList();
@@ -97,7 +99,7 @@ void StringFromInterpolated_StillUnsafe()
         .OrderBy(a => a.LastName).TagWith("Interpolated_StillUnsafe").ToList();
 }
 
-//StringFromInterpolated_Safe();
+StringFromInterpolated_Safe();
 void StringFromInterpolated_Safe()
 {
     var lastnameStart = "L";
