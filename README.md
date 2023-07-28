@@ -6,3 +6,8 @@ Samples are organized by module with before and after versions. The last 3 modul
 
 Solutions were built using Visual studio 2022 on Windows and using SQL Server LocalDb.
 
+There are two branches. EFCore6 (original in course) and EFCore7.
+
+The EF Core 7 branch is still using .NET6 but every solution (before and after) has been updated to target EF Core 7.
+
+The demos for Modules 2-10 required NO CHANGES AT ALL. 
