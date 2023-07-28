@@ -29,7 +29,9 @@ namespace PublisherData
                 new Author {AuthorId = 3, FirstName = "Sofia", LastName = "Segovia" },
                 new Author {AuthorId = 4, FirstName = "Ursula K.", LastName = "LeGuin" },
                 new Author {AuthorId = 5, FirstName = "Hugh", LastName = "Howey" },
-                new Author {AuthorId = 6, FirstName = "Isabelle", LastName = "Allende" }
+                new Author {AuthorId = 6, FirstName = "Isabelle", LastName = "Allende" },
+                  new Author {AuthorId = 7, FirstName="Don", LastName="Jones" },
+                  new Author {AuthorId = 8,FirstName="Hugh",LastName="Howey"}
             };
             modelBuilder.Entity<Author>().HasData(authorList);
 
@@ -39,7 +41,16 @@ namespace PublisherData
                 new Book {BookId = 2, AuthorId=2, Title = "A Tale For the Time Being",
                 PublishDate = new DateTime(2013,12,31) },
                 new Book {BookId = 3, AuthorId=3, Title = "The Left Hand of Darkness",
-                PublishDate=new DateTime(1969,3,1)} };
+                PublishDate=new DateTime(1969,3,1)},
+               new Book {BookId = 4,AuthorId=7,Title = "Alabaster",
+                   PublishDate = new DateTime(2019,4,1)},
+               new Book {BookId = 5,AuthorId=7,Title = "The Never",
+                   PublishDate = new DateTime(2019, 12, 1)},
+                     new Book {BookId = 6,AuthorId=8,Title = "Dust",
+          PublishDate = new DateTime(2019, 12, 1)},
+                           new Book {BookId = 7,AuthorId=8,Title = "Wool",
+          PublishDate = new DateTime(2019, 12, 1)}
+                };
             modelBuilder.Entity<Book>().HasData(someBooks);
             var someArtists = new Artist[]{
                 new Artist {ArtistId = 1, FirstName = "Pablo", LastName="Picasso"},

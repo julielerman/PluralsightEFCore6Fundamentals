@@ -3,8 +3,53 @@ using PublisherData;
 using PublisherDomain;
 
 PubContext _context = new PubContext(); //existing database
+_context.Database.EnsureDeleted();
+_context.Database.EnsureCreated();
 
-//GetAllBooksWithTheirCovers();
+
+
+NewBookAndCover();
+void NewBookAndCover()
+{
+    var book = new Book
+    {
+        AuthorId = 1,
+        Title = "Call Me Ishtar",
+        PublishDate = new DateTime(1973, 1, 1)
+    };
+    book.Cover = new Cover { DesignIdeas = "Image of Ishtar?" };
+    _context.Books.Add(book);
+    _context.SaveChanges();
+}
+
+AddCoverToExistingBook();
+void AddCoverToExistingBook()
+{
+    var book = _context.Books.Find(7); //Wool
+    book.Cover = new Cover { DesignIdeas = "A wool scouring pad" };
+    _context.SaveChanges();
+}
+
+
+AddCoverToExistingBookThatHasAnUnTrackedCover();
+void AddCoverToExistingBookThatHasAnUnTrackedCover()
+{
+    var book = _context.Books.Find(5); //The Never
+    book.Cover = new Cover { DesignIdeas = "A spiral" };
+    _context.SaveChanges();
+}
+
+AddCoverToExistingBookWithTrackedCover();
+void AddCoverToExistingBookWithTrackedCover()
+{
+    var book = _context.Books.Include(b => b.Cover)
+                             .FirstOrDefault(b => b.BookId == 5); //The Never
+    book.Cover = new Cover { DesignIdeas = "Another spiral" };
+    _context.ChangeTracker.DetectChanges();
+    var debugview = _context.ChangeTracker.DebugView.ShortView;
+}
+
+GetAllBooksWithTheirCovers();
 void GetAllBooksWithTheirCovers()
 {
     var booksandcovers = _context.Books.Include(b => b.Cover).ToList();
@@ -13,14 +58,14 @@ void GetAllBooksWithTheirCovers()
          book.Title +
          (book.Cover == null ? ": No cover yet" : ":" + book.Cover.DesignIdeas)));
 }
-//GetAllBooksThatHaveCovers();
+GetAllBooksThatHaveCovers();
 void GetAllBooksThatHaveCovers()
 {
     var booksandcovers = _context.Books.Include(b => b.Cover).Where(b => b.Cover != null).ToList();
     booksandcovers.ForEach(book =>
        Console.WriteLine(book.Title + ":" + book.Cover.DesignIdeas));
 }
-//ProjectBooksThatHaveCovers();
+ProjectBooksThatHaveCovers();
 void ProjectBooksThatHaveCovers()
 {
     var anon = _context.Books.Where(b => b.Cover != null)
@@ -31,7 +76,7 @@ void ProjectBooksThatHaveCovers()
 
 }
 
-//MultiLevelInclude();
+MultiLevelInclude();
 void MultiLevelInclude()
 {
     var authorGraph = _context.Authors.AsNoTracking()
@@ -56,44 +101,7 @@ void MultiLevelInclude()
 
 
 
-//NewBookAndCover();
-void NewBookAndCover()
-{
-    var book = new Book {AuthorId=1, Title = "Call Me Ishtar",
-                         PublishDate = new DateTime(1973, 1, 1) };
-    book.Cover = new Cover { DesignIdeas = "Image of Ishtar?" };
-    _context.Books.Add(book);   
-    _context.SaveChanges();
-}
-
-//AddCoverToExistingBook();
-void AddCoverToExistingBook()
-{
-    var book = _context.Books.Find(7); //Wool
-    book.Cover = new Cover { DesignIdeas = "A wool scouring pad" };
-     _context.SaveChanges();
-}
-
-
-//AddCoverToExistingBookThatHasAnUnTrackedCover();
-void AddCoverToExistingBookThatHasAnUnTrackedCover()
-{
-    var book = _context.Books.Find(5); //The Never
-    book.Cover = new Cover { DesignIdeas = "A spiral" };
-    _context.SaveChanges();
-}
-
-//AddCoverToExistingBookWithTrackedCover();
-void AddCoverToExistingBookWithTrackedCover()
-{
-    var book = _context.Books.Include(b => b.Cover)
-                             .FirstOrDefault(b => b.BookId == 5); //The Never
-    book.Cover = new Cover { DesignIdeas = "A spiral" };
-    _context.ChangeTracker.DetectChanges();
-    var debugview = _context.ChangeTracker.DebugView.ShortView;
-}
-
-//ProtectingFromUniqueFK();
+ProtectingFromUniqueFK();
 void ProtectingFromUniqueFK()
 {
     var TheNeverDesignIdeas = "A spirally spiral";
@@ -111,7 +119,7 @@ void ProtectingFromUniqueFK()
 }
 
 
-//MoveCoverFromOneBookToAnother();
+MoveCoverFromOneBookToAnother();
 
 void MoveCoverFromOneBookToAnother()
 {
