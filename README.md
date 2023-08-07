@@ -8,11 +8,12 @@ Solutions were built using Visual studio 2022 on Windows and using SQL Server Lo
 
 There are two branches. EFCore6 (original in course) and EFCore7.
 
+## RE the EF Core 7 Branch ##
 The EF Core 7 branch is still using .NET6 but every solution (before and after) has been updated to target EF Core 7.
 
 The demos for Modules 2-13 required NO CHANGES AT ALL. 
 
-**CHANGES TO THE API TEST DEMO**
+**CHANGES TO THE API TEST DEMO FROM MODULE 13**
 1) I updated the Tests project in this demo to .NET 7 (and all packages) in order to run the GetEndPoint tests. The other projects in the solution are still .NET 6.
 
 2) I had to make one change in the API Testing demo (also part of M13) which was to call SaveChanges when adding data to the inmemory context.
