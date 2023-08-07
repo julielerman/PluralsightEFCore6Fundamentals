@@ -1,4 +1,4 @@
-# Pluralsight EF Core 6 Fundamentals  
+# Pluralsight EF Core 6 Fundamentals  (EF Core 6 Branch)
 All code samples for [EF Core 6 Fundamentals on Pluralsight](https://pluralsight.pxf.io/EFCore6)  
 Published May 3, 2022  
 
