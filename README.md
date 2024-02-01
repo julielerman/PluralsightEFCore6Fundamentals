@@ -1,4 +1,6 @@
 # Pluralsight EF Core 6 Fundamentals  
+
+### Note: EF Core 8 Fundamentals was published Jan 2024. Code and links are at https://github.com/julielerman/EFCore8Fundamentals.###
 All code samples for [EF Core 6 Fundamentals on Pluralsight](https://pluralsight.pxf.io/EFCore6)  
 Published May 3, 2022  
 
